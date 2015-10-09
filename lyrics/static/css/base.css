@@ -32,7 +32,9 @@ div#question-form {
     padding:2em;
     border: 1px solid gray;
     border-radius: 25px;
+    background: #F7EDDC;
 }
+
 #question-form input {
     width: 100%;
 }

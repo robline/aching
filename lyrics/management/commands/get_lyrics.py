@@ -23,7 +23,7 @@ class Command(BaseCommand):
             data['verses'] = [p.get_text() for p in soup.select('div#lyrics-body-text p.verse')]
             data['acks'] = [p.get_text() for p in soup.select('p.writers')]
         except:
-            pass
+            raise
         return data
 
     def handle(self, *args, **options):
