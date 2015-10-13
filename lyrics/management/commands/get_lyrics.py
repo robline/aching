@@ -8,10 +8,13 @@ class Command(BaseCommand):
 
     def get_lyric_page_urls(self):
         url = 'http://www.metrolyrics.com/abba-alpage-3.html'
-        response = requests.get(url)
-        soup = bs4.BeautifulSoup(response.text)
-        regex = re.compile(".*lyrics.*")
-        elements = soup.findAll('a', {'title': regex})
+        try:
+            response = requests.get(url)
+            soup = bs4.BeautifulSoup(response.text)
+            regex = re.compile(".*lyrics.*")
+            elements = soup.findAll('a', {'title': regex})
+        except:
+            raise
         return [a.attrs.get('href') for a in elements]
 
     def get_lyrics_data(self, url):
